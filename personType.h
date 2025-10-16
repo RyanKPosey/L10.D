@@ -9,6 +9,7 @@
 
 #include <cstdint>
 #include <string>
+#include <vector>
 
 class personType { 
     std::string firstName_;
@@ -55,6 +56,10 @@ public:
     std::string getDOB() const;
     char getGender() const;
     uint16_t getAge() const;
+
+    static int getTallest(const std::vector<personType>& people);
+    static int getOldest(const std::vector<personType>& people);
+    static int getYoungest(const std::vector<personType>& people);
 };
 
 #endif // PERSON_TYPE_H

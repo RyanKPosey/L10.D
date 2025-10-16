@@ -178,3 +178,39 @@ bool personType::equals(const personType& other) const {
     string personType::getDOB() const { return date_of_birth_; }
     char personType::getGender() const { return gender_; }
     uint16_t personType::getAge() const { return age_; }
+
+int personType::getTallest(const vector<personType>& people) {
+    if (people.empty()) return -1; // Return -1 if vector is empty
+    size_t tallestIndex = 0;
+    // Find tallest index
+    for (size_t i = 1; i < people.size(); i++) { 
+        if (people[i].getHeight() > people[tallestIndex].getHeight()) {
+            tallestIndex = i;
+        }
+    }
+    return static_cast<int>(tallestIndex); // Return int so compatible with iostream
+}
+
+int personType::getOldest(const vector<personType>& people) {
+    if (people.empty()) return -1; // Return -1 if vector is empty
+    size_t oldestIndex = 0;
+    // Find oldest index
+    for (size_t i = 1; i < people.size(); i++) {
+        if (people[i].getAge() > people[oldestIndex].getAge()) {
+            oldestIndex = i;
+        }
+    }
+    return static_cast<int>(oldestIndex); // Return int so compatible with iostream
+}
+
+int personType::getYoungest(const vector<personType>& people) {
+    if (people.empty()) return -1; // Return -1 if vector is empty
+    size_t youngestIndex = 0;
+    // Find youngest index
+    for (size_t i = 1; i < people.size(); i++) {
+        if (people[i].getAge() < people[youngestIndex].getAge()) {
+            youngestIndex = i;
+        }
+    }
+    return static_cast<int>(youngestIndex); // Return int so compatible with iostream
+}
