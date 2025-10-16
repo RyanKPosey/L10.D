@@ -9,7 +9,7 @@
 #include <iomanip>
 #include "personType.h"
 #include <vector>
-#include "selectionSort.h"
+#include "selection_sort.h"
 
 using namespace std;
 

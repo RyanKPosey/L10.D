@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <vector>
-#include "selectionSort.h"
+#include "selection_sort.h"
 #include "personType.h"
 #include "utils.h"
 #include <cctype>
