@@ -87,7 +87,7 @@ void selectionSortByHeight(vector<personType>& entries) {
     for (size_t i = 0; i < entries.size(); i++) {
         size_t smallestIndex = i;
 
-        // Iterate over all entries after i to check if there is a taller entry
+        // Iterate over all entries after i to check if there is a smaller entry
         for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
             if (entries[i2].getHeight() < entries[smallestIndex].getHeight()) {
                 smallestIndex = i2;
