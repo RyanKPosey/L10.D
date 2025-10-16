@@ -9,6 +9,7 @@
 #include <iomanip>
 #include "personType.h"
 #include <vector>
+#include "selectionSort.h"
 
 using namespace std;
 
@@ -40,20 +41,53 @@ int main() {
         personType("Hedy", "Lamarr", "Hollywood, CA", 67.0, "1914-11-09", 'F', 26)
     };
 
-    cout << personType::getTallest(people) << " is the index of the tallest person." << endl;
-    cout << personType::getOldest(people) << " is the index of the oldest person." << endl;
-    cout << personType::getYoungest(people) << " is the index of the youngest person." << endl;
+    char choice;
 
-    // Stretch 1 (Heading)
-    cout << left << setw(10) << setfill('-') << "" << " # personType class # " << left << setw(10) << setfill('-') << "" << endl;
+    do {
+        cout << "1: Print Tallest\n2: print oldest\n3: print youngest\n4: selection sort" << endl;
+        cin >> choice;
 
-    cout << setfill(' ');
-
-    // Compare a few personType members
-    cout << boolalpha;
-    if (people.size() >= 4) {
-        cout << left << setw(30) << "equals(people[0], people[1]) = " << left << people[0].equals(people[1]) << endl;
-        cout << left << setw(30) << "equals(people[2], people[3]) = " << left << people[2].equals(people[3]) << endl;
-        cout << left << setw(30) << "equals(people[2], people[2]) = " << left << people[2].equals(people[2]) << endl;
-    }
+        switch (choice) {
+            case '1': {
+                int tallestIndex = personType::getTallest(people);
+                if (tallestIndex != -1) {
+                    cout << "Tallest person is at index " << tallestIndex << ":" << endl;
+                    people[tallestIndex].print();
+                } else {
+                    cout << "No people in the list." << endl;
+                }
+            } break;
+            case '2': {
+                int oldestIndex = personType::getOldest(people);
+                if (oldestIndex != -1) {
+                    cout << "Oldest person is at index " << oldestIndex << ":" << endl;
+                    people[oldestIndex].print();
+                } else {
+                    cout << "No people in the list." << endl;
+                }
+            } break;
+            case '3': {
+                int youngestIndex = personType::getYoungest(people);
+                if (youngestIndex != -1) {
+                    cout << "Youngest person is at index " << youngestIndex << ":" << endl;
+                    people[youngestIndex].print();
+                } else {
+                    cout << "No people in the list." << endl;
+                }
+            } break;
+            case '4': {
+                char sortKey;
+                cout << "Enter sort key\na: First Name\nb: Last Name\nc: Height\nd: Address\ne: Age\nf: DOB\ng: Gender\nh: Last Name then First Name): ";
+                cin >> sortKey;
+                selectionSort(people, sortKey);
+            }
+            break;
+            case '5': {
+                cout << "Exiting..." << endl;
+            } break;
+            default: {
+                cout << "Invalid choice. Please try again." << endl;
+            } break;
+        }
+    } while (choice != '5');
 }
