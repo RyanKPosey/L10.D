@@ -9,12 +9,36 @@
 #include <vector>
 #include "selectionSort.h"
 #include "personType.h"
+#include "utils.h"
 #include <cctype>
 
 using namespace std;
 
 vector<personType> selectionSortByFirstName(const vector<personType>& entries) {
-    
+    vector<personType> sortedEntries = entries;
+
+    for (int i = 0; i < entries.size(); i++) {
+        int alphabeticallyLowestIndex = i;
+        
+        // Iterate over all entries after i to check if there is a smaller entry
+        for (int i2 = i; i2 < entries.size(); i2++) {
+            if (
+                checkIfSmallerAlphabetically(
+                    sortedEntries[i2].getFirstName(),
+                    sortedEntries[alphabeticallyLowestIndex].getFirstName()
+                ) 
+            ) {
+                alphabeticallyLowestIndex = i2;
+            }
+        }
+
+        // Switch entries so that lower alphabetical first name comes first
+        const personType temp = sortedEntries[i];
+        sortedEntries[i] = sortedEntries[alphabeticallyLowestIndex];
+        sortedEntries[alphabeticallyLowestIndex] = temp;
+    }
+
+    return sortedEntries;
 }
 
 vector<personType> selectionSortByLastName(const vector<personType>& entries) {
