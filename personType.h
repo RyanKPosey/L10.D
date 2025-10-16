@@ -1,8 +1,8 @@
 /*
     Programmer: Ryan Posey
-    Assignment: L10.C
+    Assignment: L10.D
     Purpose: Practice using constructors
-    Due date: 10/02/2025
+    Due date: 10/16/2025
 */
 #include <cstdint>
 
