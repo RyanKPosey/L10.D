@@ -8,4 +8,11 @@
 #ifndef SELECTION_SORT_H
 #define SELECTION_SORT_H
 
+#include <vector>
+#include "personType.h"
+
+using namespace std;
+
+vector<personType> selectionSort(vector<personType> entries, int sortKey);
+
 #endif // SELECTION_SORT_H
