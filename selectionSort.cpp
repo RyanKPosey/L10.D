@@ -99,19 +99,19 @@ vector<personType> selectionSortByHeight(const vector<personType>& entries) {
     vector<personType> sortedEntries = entries;
 
     for (int i = 0; i < sortedEntries.size(); i++) {
-        int tallestIndex = i;
+        int smallestIndex = i;
 
         // Iterate over all entries after i to check if there is a taller entry
         for (int i2 = i + 1; i2 < sortedEntries.size(); i2++) {
-            if (sortedEntries[i2].getHeight() > sortedEntries[tallestIndex].getHeight()) {
-                tallestIndex = i2;
+            if (sortedEntries[i2].getHeight() < sortedEntries[smallestIndex].getHeight()) {
+                smallestIndex = i2;
             }
         }
 
-        // Switch entries so that taller person comes first
+        // Switch entries so that shorter person comes first
         const personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[tallestIndex];
-        sortedEntries[tallestIndex] = temp;
+        sortedEntries[i] = sortedEntries[smallestIndex];
+        sortedEntries[smallestIndex] = temp;
     }
 
     return sortedEntries;
