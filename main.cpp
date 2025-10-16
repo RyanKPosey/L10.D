@@ -84,6 +84,7 @@ int main() {
             break;
             case '5': {
                 cout << "Exiting..." << endl;
+                return 0;
             } break;
             default: {
                 cout << "Invalid choice. Please try again." << endl;
