@@ -11,8 +11,6 @@
 #include <vector>
 #include "personType.h"
 
-using namespace std;
-
-vector<personType> selectionSort(const vector<personType>& entries, const int sortKey);
+std::vector<personType> selectionSort(const std::vector<personType>& entries, const int sortKey);
 
 #endif // SELECTION_SORT_H
