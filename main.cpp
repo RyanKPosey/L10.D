@@ -40,6 +40,10 @@ int main() {
         personType("Hedy", "Lamarr", "Hollywood, CA", 67.0, "1914-11-09", 'F', 26)
     };
 
+    cout << personType::getTallest(people) << " is the index of the tallest person." << endl;
+    cout << personType::getOldest(people) << " is the index of the oldest person." << endl;
+    cout << personType::getYoungest(people) << " is the index of the youngest person." << endl;
+
     // Stretch 1 (Heading)
     cout << left << setw(10) << setfill('-') << "" << " # personType class # " << left << setw(10) << setfill('-') << "" << endl;
 
