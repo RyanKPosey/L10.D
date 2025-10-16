@@ -89,5 +89,10 @@ int main() {
                 cout << "Invalid choice. Please try again." << endl;
             } break;
         }
+
+        for (const auto& person : people) {
+            person.print();
+            cout << endl;
+        }
     } while (choice != '5');
 }
