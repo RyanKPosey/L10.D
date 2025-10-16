@@ -8,6 +8,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 #include <iostream>
+#include <string>
 
 int getLargerStringAlphabetically(const std::string& str1, const std::string& str2);
 
