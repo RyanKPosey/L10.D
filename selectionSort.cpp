@@ -183,6 +183,42 @@ vector<personType> selectionSortByAge(const vector<personType>& entries) {
     return sortedEntries;
 }
 
+vector<personType> selectionSortByLastNameThenFirstName(const vector<personType>& entries) {
+    vector<personType> sortedEntries = entries;
+    
+    for(int i = 0; i < sortedEntries.size(); i++) {
+        int alphabeticallyLowestIndex = i;
+        
+        // Find alphabetically lowest index
+        for (int i2 = i + 1; i < sortedEntries.size(); i++) {
+            if (
+                checkIfSmallerAlphabetically( // i2 smaller by last name
+                    sortedEntries[i2].getLastName(),
+                    sortedEntries[alphabeticallyLowestIndex].getLastName()
+                ) ||
+                (
+                    !checkIfSmallerAlphabetically( // current lowest index not smaller by last name
+                        sortedEntries[alphabeticallyLowestIndex].getLastName(),
+                        sortedEntries[i2].getLastName()
+                    ) &&
+                    checkIfSmallerAlphabetically( // i2 smaller by first name
+                        sortedEntries[i2].getFirstName(),
+                        sortedEntries[alphabeticallyLowestIndex].getFirstName()
+                    )
+                )
+            ) {
+                alphabeticallyLowestIndex = i2;
+            }
+        }
+
+        // Switch entry at current index with entry at index of next lowest alphabetical score
+        personType temp = sortedEntries[i];
+        sortedEntries[i] = sortedEntries[alphabeticallyLowestIndex];
+        sortedEntries[alphabeticallyLowestIndex] = temp;
+    }
+}
+
+
 vector<personType> selectionSort(const vector<personType>& entries, const int sortKey) {
     switch (sortKey) {
         case '1':
@@ -199,6 +235,8 @@ vector<personType> selectionSort(const vector<personType>& entries, const int so
             return selectionSortByGender(entries);
         case '7':
             return selectionSortByAge(entries);
+        case '8': // Stretch 5 (Last Name, then First Name)
+            return selectionSortByLastNameThenFirstName(entries);
         default:
             return entries; // No sorting if key is invalid
     }
