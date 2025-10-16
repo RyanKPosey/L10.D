@@ -55,7 +55,7 @@ int main() {
                     people[tallestIndex].print();
                 } else {
                     cout << "No people in the list." << endl;
-                }
+                } continue;
             } break;
             case '2': {
                 int oldestIndex = personType::getOldest(people);
@@ -64,7 +64,7 @@ int main() {
                     people[oldestIndex].print();
                 } else {
                     cout << "No people in the list." << endl;
-                }
+                } continue;
             } break;
             case '3': {
                 int youngestIndex = personType::getYoungest(people);
@@ -73,7 +73,7 @@ int main() {
                     people[youngestIndex].print();
                 } else {
                     cout << "No people in the list." << endl;
-                }
+                } continue;
             } break;
             case '4': {
                 char sortKey;
