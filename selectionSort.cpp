@@ -14,18 +14,16 @@
 
 using namespace std;
 
-vector<personType> selectionSortByFirstName(const vector<personType>& entries) {
-    vector<personType> sortedEntries = entries;
+void selectionSortByFirstName(vector<personType>& entries) {
+    for (size_t i = 0; i < entries.size(); i++) {
+        size_t alphabeticallyLowestIndex = i;
 
-    for (int i = 0; i < sortedEntries.size(); i++) {
-        int alphabeticallyLowestIndex = i;
-        
         // Iterate over all entries after i to check if there is a smaller entry
-        for (int i2 = i + 1; i2 < sortedEntries.size(); i2++) {
+        for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
             if (
                 checkIfSmallerAlphabetically(
-                    sortedEntries[i2].getFirstName(),
-                    sortedEntries[alphabeticallyLowestIndex].getFirstName()
+                    entries[i2].getFirstName(),
+                    entries[alphabeticallyLowestIndex].getFirstName()
                 ) 
             ) {
                 alphabeticallyLowestIndex = i2;
@@ -33,53 +31,45 @@ vector<personType> selectionSortByFirstName(const vector<personType>& entries) {
         }
 
         // Switch entries so that lower alphabetical first name comes first
-        const personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[alphabeticallyLowestIndex];
-        sortedEntries[alphabeticallyLowestIndex] = temp;
+        const personType temp = entries[i];
+        entries[i] = entries[alphabeticallyLowestIndex];
+        entries[alphabeticallyLowestIndex] = temp;
     }
-
-    return sortedEntries;
 }
 
-vector<personType> selectionSortByLastName(const vector<personType>& entries) {
-    vector<personType> sortedEntries = entries;
+void selectionSortByLastName(vector<personType>& entries) {
+    for (size_t i = 0; i < entries.size(); i++) {
+        size_t alphabeticallyLowestIndex = i;
 
-    for (int i = 0; i < sortedEntries.size(); i++) {
-        int alphabeticallyLowestIndex = i;
-        
         // Iterate over all entries after i to check if there is a smaller entry
-        for (int i2 = i + 1; i2 < sortedEntries.size(); i2++) {
+        for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
             if (
                 checkIfSmallerAlphabetically(
-                    sortedEntries[i2].getLastName(),
-                    sortedEntries[alphabeticallyLowestIndex].getLastName()
-                ) 
+                    entries[i2].getLastName(),
+                    entries[alphabeticallyLowestIndex].getLastName()
+                )
             ) {
                 alphabeticallyLowestIndex = i2;
             }
         }
 
         // Switch entries so that lower alphabetical last name comes first
-        const personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[alphabeticallyLowestIndex];
-        sortedEntries[alphabeticallyLowestIndex] = temp;
+        const personType temp = entries[i];
+        entries[i] = entries[alphabeticallyLowestIndex];
+        entries[alphabeticallyLowestIndex] = temp;
     }
-
-    return sortedEntries;
 }
 
-vector<personType> selectionSortByAddress(const vector<personType>& entries) {
-    vector<personType> sortedEntries = entries;
-
-    for (int i = 0; i < sortedEntries.size(); i++) {
-        int alphabeticallyLowestIndex = i;
+void selectionSortByAddress(vector<personType>& entries) {
+    for (size_t i = 0; i < entries.size(); i++) {
+        size_t alphabeticallyLowestIndex = i;
 
         // Iterate over all entries after i to check if there is a smaller entry
-        for (int i2 = i + 1; i2 < sortedEntries.size(); i2++) {
+        for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
             if (
                 checkIfSmallerAlphabetically(
-                    sortedEntries[i2].getAddress(),
-                    sortedEntries[alphabeticallyLowestIndex].getAddress()
+                    entries[i2].getAddress(),
+                    entries[alphabeticallyLowestIndex].getAddress()
                 )
             ) {
                 alphabeticallyLowestIndex = i2;
@@ -87,123 +77,103 @@ vector<personType> selectionSortByAddress(const vector<personType>& entries) {
         }
 
         // Switch entries so that lower alphabetical address comes first
-        const personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[alphabeticallyLowestIndex];
-        sortedEntries[alphabeticallyLowestIndex] = temp;
+        const personType temp = entries[i];
+        entries[i] = entries[alphabeticallyLowestIndex];
+        entries[alphabeticallyLowestIndex] = temp;
     }
-
-    return sortedEntries;
 }
 
-vector<personType> selectionSortByHeight(const vector<personType>& entries) {
-    vector<personType> sortedEntries = entries;
-
-    for (int i = 0; i < sortedEntries.size(); i++) {
-        int smallestIndex = i;
+void selectionSortByHeight(vector<personType>& entries) {
+    for (size_t i = 0; i < entries.size(); i++) {
+        size_t smallestIndex = i;
 
         // Iterate over all entries after i to check if there is a taller entry
-        for (int i2 = i + 1; i2 < sortedEntries.size(); i2++) {
-            if (sortedEntries[i2].getHeight() < sortedEntries[smallestIndex].getHeight()) {
+        for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
+            if (entries[i2].getHeight() < entries[smallestIndex].getHeight()) {
                 smallestIndex = i2;
             }
         }
 
         // Switch entries so that shorter person comes first
-        const personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[smallestIndex];
-        sortedEntries[smallestIndex] = temp;
+        const personType temp = entries[i];
+        entries[i] = entries[smallestIndex];
+        entries[smallestIndex] = temp;
     }
-
-    return sortedEntries;
 }
 
-vector<personType> selectionSortByDOB(const vector<personType>& entries) {
-    vector<personType> sortedEntries = entries;
-
-    for (int i = 0; i < sortedEntries.size(); i++) {
-        int earliestDOBIndex = i;
+void selectionSortByDOB(vector<personType>& entries) {
+    for (size_t i = 0; i < entries.size(); i++) {
+        size_t earliestDOBIndex = i;
 
         // Iterate over all entries after i to check if there is an earlier DOB
-        for (int i2 = i + 1; i2 < sortedEntries.size(); i2++) {
-            if (sortedEntries[i2].getDOB() < sortedEntries[earliestDOBIndex].getDOB()) {
+        for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
+            if (entries[i2].getDOB() < entries[earliestDOBIndex].getDOB()) {
                 earliestDOBIndex = i2;
             }
         }
 
         // Switch entries so that earlier DOB comes first
-        const personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[earliestDOBIndex];
-        sortedEntries[earliestDOBIndex] = temp;
+        const personType temp = entries[i];
+        entries[i] = entries[earliestDOBIndex];
+        entries[earliestDOBIndex] = temp;
     }
-
-    return sortedEntries;
 }
 
-vector<personType> selectionSortByGender(const vector<personType>& entries) {
-    vector<personType> sortedEntries = entries;
-
-    for (int i = 0; i < static_cast<int>(sortedEntries.size()); i++) {
-        int lowestIndex = i;
-        for (int i2 = i + 1; i2 < static_cast<int>(sortedEntries.size()); i2++) {
+void selectionSortByGender(vector<personType>& entries) {
+    for (size_t i = 0; i < entries.size(); i++) {
+        size_t lowestIndex = i;
+        for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
             // compare genders case-insensitively
-            char g1 = static_cast<char>(std::tolower(static_cast<unsigned char>(sortedEntries[i2].getGender())));
-            char g2 = static_cast<char>(std::tolower(static_cast<unsigned char>(sortedEntries[lowestIndex].getGender())));
+            char g1 = static_cast<char>(std::tolower(static_cast<unsigned char>(entries[i2].getGender())));
+            char g2 = static_cast<char>(std::tolower(static_cast<unsigned char>(entries[lowestIndex].getGender())));
             if (g1 < g2) {
                 lowestIndex = i2;
             }
         }
 
-        const personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[lowestIndex];
-        sortedEntries[lowestIndex] = temp;
+        const personType temp = entries[i];
+        entries[i] = entries[lowestIndex];
+        entries[lowestIndex] = temp;
     }
-
-    return sortedEntries;
 }
 
-vector<personType> selectionSortByAge(const vector<personType>& entries) {
-    vector<personType> sortedEntries = entries;
-
-    for (int i = 0; i < sortedEntries.size(); i++) {
-        int youngestIndex = i;
+void selectionSortByAge(vector<personType>& entries) {
+    for (size_t i = 0; i < entries.size(); i++) {
+        size_t youngestIndex = i;
 
         // Iterate over all entries after i to check if there is a younger entry
-        for (int i2 = i + 1; i2 < sortedEntries.size(); i2++) {
-            if (sortedEntries[i2].getAge() < sortedEntries[youngestIndex].getAge()) {
+        for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
+            if (entries[i2].getAge() < entries[youngestIndex].getAge()) {
                 youngestIndex = i2;
             }
         }
 
         // Switch entries so that younger person comes first
-        const personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[youngestIndex];
-        sortedEntries[youngestIndex] = temp;
+        const personType temp = entries[i];
+        entries[i] = entries[youngestIndex];
+        entries[youngestIndex] = temp;
     }
-
-    return sortedEntries;
 }
 
-vector<personType> selectionSortByLastNameThenFirstName(const vector<personType>& entries) {
-    vector<personType> sortedEntries = entries;
-    
-    for(int i = 0; i < sortedEntries.size(); i++) {
-        int alphabeticallyLowestIndex = i;
+void selectionSortByLastNameThenFirstName(vector<personType>& entries) {
+    for(size_t i = 0; i < entries.size(); i++) {
+        size_t alphabeticallyLowestIndex = i;
         
         // Find alphabetically lowest index
-        for (int i2 = i + 1; i < sortedEntries.size(); i++) {
+        for (size_t i2 = i + 1; i2 < entries.size(); i2++) {
             if (
                 checkIfSmallerAlphabetically( // i2 smaller by last name
-                    sortedEntries[i2].getLastName(),
-                    sortedEntries[alphabeticallyLowestIndex].getLastName()
+                    entries[i2].getLastName(),
+                    entries[alphabeticallyLowestIndex].getLastName()
                 ) ||
                 (
                     !checkIfSmallerAlphabetically( // current lowest index not smaller by last name
-                        sortedEntries[alphabeticallyLowestIndex].getLastName(),
-                        sortedEntries[i2].getLastName()
+                        entries[alphabeticallyLowestIndex].getLastName(),
+                        entries[i2].getLastName()
                     ) &&
                     checkIfSmallerAlphabetically( // i2 smaller by first name
-                        sortedEntries[i2].getFirstName(),
-                        sortedEntries[alphabeticallyLowestIndex].getFirstName()
+                        entries[i2].getFirstName(),
+                        entries[alphabeticallyLowestIndex].getFirstName()
                     )
                 )
             ) {
@@ -212,32 +182,32 @@ vector<personType> selectionSortByLastNameThenFirstName(const vector<personType>
         }
 
         // Switch entry at current index with entry at index of next lowest alphabetical score
-        personType temp = sortedEntries[i];
-        sortedEntries[i] = sortedEntries[alphabeticallyLowestIndex];
-        sortedEntries[alphabeticallyLowestIndex] = temp;
+        personType temp = entries[i];
+        entries[i] = entries[alphabeticallyLowestIndex];
+        entries[alphabeticallyLowestIndex] = temp;
     }
 }
 
 
-vector<personType> selectionSort(const vector<personType>& entries, const int sortKey) {
+void selectionSort(vector<personType>& entries, const int sortKey) {
     switch (sortKey) {
         case '1':
-            return selectionSortByFirstName(entries);
+            selectionSortByFirstName(entries);
         case '2':
-            return selectionSortByLastName(entries);
+            selectionSortByLastName(entries);
         case '3':
-            return selectionSortByAddress(entries);
+            selectionSortByAddress(entries);
         case '4':
-            return selectionSortByHeight(entries);
+            selectionSortByHeight(entries);
         case '5':
-            return selectionSortByDOB(entries);
+            selectionSortByDOB(entries);
         case '6':
-            return selectionSortByGender(entries);
+            selectionSortByGender(entries);
         case '7':
-            return selectionSortByAge(entries);
+            selectionSortByAge(entries);
         case '8': // Stretch 5 (Last Name, then First Name)
-            return selectionSortByLastNameThenFirstName(entries);
+            selectionSortByLastNameThenFirstName(entries);
         default:
-            return entries; // No sorting if key is invalid
+            return; // No sorting if key is invalid
     }
 }
