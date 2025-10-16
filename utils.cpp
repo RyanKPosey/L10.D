@@ -6,3 +6,7 @@
 */
 #include <iostream>
 #include "utils.h"
+
+int getLargerStringAlphabetically(const std::string& str1, const std::string& str2) {
+    return 0; // stub
+}
