@@ -21,7 +21,7 @@ vector<personType> selectionSortByFirstName(const vector<personType>& entries) {
         int alphabeticallyLowestIndex = i;
         
         // Iterate over all entries after i to check if there is a smaller entry
-        for (int i2 = i; i2 < entries.size(); i2++) {
+        for (int i2 = i + 1; i2 < entries.size(); i2++) {
             if (
                 checkIfSmallerAlphabetically(
                     sortedEntries[i2].getFirstName(),
