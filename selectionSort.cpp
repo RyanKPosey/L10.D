@@ -193,20 +193,28 @@ void selectionSort(vector<personType>& entries, const int sortKey) {
     switch (sortKey) {
         case '1':
             selectionSortByFirstName(entries);
+            break;
         case '2':
             selectionSortByLastName(entries);
+            break;
         case '3':
             selectionSortByAddress(entries);
+            break;
         case '4':
             selectionSortByHeight(entries);
+            break;
         case '5':
             selectionSortByDOB(entries);
+            break;
         case '6':
             selectionSortByGender(entries);
+            break;
         case '7':
             selectionSortByAge(entries);
+            break;
         case '8': // Stretch 5 (Last Name, then First Name)
             selectionSortByLastNameThenFirstName(entries);
+            break;
         default:
             return; // No sorting if key is invalid
     }
