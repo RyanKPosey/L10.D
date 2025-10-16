@@ -69,12 +69,12 @@ bool compareStringCaseInsensitive(const string& string1, const string& string2) 
 }
 
 void personType::print() const { // Stretch 2 (Formatted output)
-    std::cout <<  left << setw(20) << " | Name: " << left << this->getName() << endl
-        << left << setw(20) << " | Address: " << left << this->getAddress() << endl
-        << left << setw(20) << " | Height: " << left << std::fixed << std::setprecision(1) << this->getHeight() << " in" << endl
-        << left << setw(20) << " | DOB: " << left << this->getDOB() << endl
-        << left << setw(20) << " | Gender: " << left << this->getGender() << endl
-        << left << setw(20) << " | Age: " << left << static_cast<int>(this->getAge()) << endl;
+    std::cout <<  left << setw(10) << " | Name: " << left << this->getName() << 
+        left << setw(10) << " | Address: " << left << this->getAddress() << 
+        left << setw(10) << " | Height: " << left << std::fixed << std::setprecision(1) << this->getHeight() << " in" <<
+        left << setw(10) << " | DOB: " << left << this->getDOB() <<
+        left << setw(10) << " | Gender: " << left << this->getGender() <<
+        left << setw(10) << " | Age: " << left << static_cast<int>(this->getAge()) << endl;
 }
 
 bool personType::equals(const personType& other) const {
