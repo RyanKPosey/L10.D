@@ -6,17 +6,19 @@
 */
 
 #include <iostream>
-#include "personType.h"
+#include <cctype>
 #include <cstdint>
 #include <iomanip>
+#include "personType.h"
 
 using namespace std;
 
 personType::personType( // Full constructor
-    string firstName, string lastName, string address, 
-    double height, string DOB, char gender, uint16_t age
+    const string& firstName, const string& lastName, const string& address, 
+    double height, const string& DOB, char gender, uint16_t age
 ) {
-    name_ = firstName + " " + lastName;
+    firstName_ = firstName;
+    lastName_ = lastName;
     address_ = address;
     height_inches_ = height;
     date_of_birth_ = DOB;
@@ -25,8 +27,9 @@ personType::personType( // Full constructor
 }
 
 
-personType::personType(string firstName, string lastName) { // First+Last constructor
-    name_ = firstName + " " + lastName;
+personType::personType(const string& firstName, const string& lastName) { // First+Last constructor
+    firstName_ = firstName;
+    lastName_ = lastName;
     address_ = "Not Set";
     height_inches_ = 0.0;
     date_of_birth_ = "Not Set";
@@ -35,7 +38,8 @@ personType::personType(string firstName, string lastName) { // First+Last constr
 }
 
 personType::personType() { // Default constructor
-    name_ = "Not Set";
+    firstName_ = "Not Set";
+    lastName_ = "";
     address_ = "Not Set";
     height_inches_ = 0.0;
     date_of_birth_ = "Not Set";
@@ -48,15 +52,15 @@ personType::~personType() { // Destructor
 }
 
 
-bool compareStringCaseInsensitive(string string1, string string2) { // Stretch 3 (Case Insensitive Comparison)
+bool compareStringCaseInsensitive(const string& string1, const string& string2) { // Stretch 3 (Case Insensitive Comparison)
     if (string1.size() != string2.size()) { // string1 and string2 aren't the same size
         return false;
     }
 
     for (size_t i = 0; i < string1.size(); i++) {
         if (
-            static_cast<unsigned char>(tolower(string1[i])) !=
-            static_cast<unsigned char>(tolower(string2[i]))
+            static_cast<unsigned char>(tolower(static_cast<unsigned char>(string1[i]))) !=
+            static_cast<unsigned char>(tolower(static_cast<unsigned char>(string2[i])))
         ) {
             return false;
         }
@@ -92,8 +96,8 @@ bool personType::equals(const personType& other) const {
     }
 
     if (
-        static_cast<unsigned char>(tolower(this->getGender())) != // Case insensitive
-        static_cast<unsigned char>(tolower(other.getGender()))
+        static_cast<unsigned char>(tolower(static_cast<unsigned char>(this->getGender()))) != // Case insensitive
+        static_cast<unsigned char>(tolower(static_cast<unsigned char>(other.getGender())))
     ) {
         return false;
     }
@@ -107,11 +111,33 @@ bool personType::equals(const personType& other) const {
 
     // Setters
 
-    void personType::setName(string name) {
-        name_ = name;
+    void personType::setName(const string& name) {
+        // Split into first and last at first whitespace. If none, store as first name.
+        size_t pos = name.find_first_of(" \t");
+        if (pos == string::npos) {
+            firstName_ = name;
+            lastName_.clear();
+        } else {
+            firstName_ = name.substr(0, pos);
+            // skip multiple spaces/tabs
+            size_t startLast = name.find_first_not_of(" \t", pos);
+            if (startLast == string::npos) {
+                lastName_.clear();
+            } else {
+                lastName_ = name.substr(startLast);
+            }
+        }
     }
 
-    void personType::setAddress(string address) {
+    void personType::setFirstName(const string& firstName) {
+        firstName_ = firstName;
+    }
+
+    void personType::setLastName(const string& lastName) {
+        lastName_ = lastName;
+    }
+
+    void personType::setAddress(const string& address) {
         address_ = address;
     }
 
@@ -123,7 +149,7 @@ bool personType::equals(const personType& other) const {
         height_inches_ = height;
     }
 
-    void personType::setDOB(string DOB) {
+    void personType::setDOB(const string& DOB) {
         date_of_birth_ = DOB;
     }
 
@@ -141,7 +167,12 @@ bool personType::equals(const personType& other) const {
 
     // Getters
 
-    string personType::getName() const { return name_; }
+    string personType::getName() const { 
+        if (lastName_.empty()) return firstName_;
+        return firstName_ + " " + lastName_; 
+    }
+    string personType::getFirstName() const { return firstName_; }
+    string personType::getLastName() const { return lastName_; }
     string personType::getAddress() const { return address_; }
     double personType::getHeight() const { return height_inches_; }
     string personType::getDOB() const { return date_of_birth_; }
