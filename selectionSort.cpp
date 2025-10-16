@@ -189,30 +189,30 @@ void selectionSortByLastNameThenFirstName(vector<personType>& entries) {
 }
 
 
-void selectionSort(vector<personType>& entries, const int sortKey) {
+void selectionSort(vector<personType>& entries, const char sortKey) {
     switch (sortKey) {
-        case '1':
+        case 'a':
             selectionSortByFirstName(entries);
             break;
-        case '2':
+        case 'b':
             selectionSortByLastName(entries);
             break;
-        case '3':
+        case 'c':
             selectionSortByAddress(entries);
             break;
-        case '4':
+        case 'd':
             selectionSortByHeight(entries);
             break;
-        case '5':
+        case 'e':
             selectionSortByDOB(entries);
             break;
-        case '6':
+        case 'f':
             selectionSortByGender(entries);
             break;
-        case '7':
+        case 'g':
             selectionSortByAge(entries);
             break;
-        case '8': // Stretch 5 (Last Name, then First Name)
+        case 'h': // Stretch 5 (Last Name, then First Name)
             selectionSortByLastNameThenFirstName(entries);
             break;
         default:
