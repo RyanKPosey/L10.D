@@ -13,6 +13,6 @@
 
 using namespace std;
 
-vector<personType> selectionSort(vector<personType> entries, int sortKey);
+vector<personType> selectionSort(const vector<personType>& entries, const int sortKey);
 
 #endif // SELECTION_SORT_H

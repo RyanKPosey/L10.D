@@ -13,35 +13,35 @@
 
 using namespace std;
 
-vector<personType> selectionSortByFirstName(vector<personType> entries) {
+vector<personType> selectionSortByFirstName(const vector<personType>& entries) {
     
 }
 
-vector<personType> selectionSortByLastName(vector<personType> entries) {
+vector<personType> selectionSortByLastName(const vector<personType>& entries) {
 
 }
 
-vector<personType> selectionSortByaddress(vector<personType> entries) {
-    
+vector<personType> selectionSortByaddress(const vector<personType>& entries) {
+
 }
 
-vector<personType> selectionSortByHeight(vector<personType> entries) {
-    
+vector<personType> selectionSortByHeight(const vector<personType>& entries) {
+
 }
 
-vector<personType> selectionSortByDOB(vector<personType> entries) {
-    
+vector<personType> selectionSortByDOB(const vector<personType>& entries) {
+
 }
 
-vector<personType> selectionSortByGender(vector<personType> entries) {
-    
+vector<personType> selectionSortByGender(const vector<personType>& entries) {
+
 }
 
-vector<personType> selectionSortByAge(vector<personType> entries) {
-    
+vector<personType> selectionSortByAge(const vector<personType>& entries) {
+
 }
 
-vector<personType> selectionSort(vector<personType> entries, int sortKey) {
+vector<personType> selectionSort(const vector<personType>& entries, const int sortKey) {
     switch (sortKey) {
         case '1':
             return selectionSortByFirstName(entries);
