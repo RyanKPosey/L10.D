@@ -7,18 +7,18 @@
 #include <iostream>
 #include "utils.h"
 
-int getSmallerStringAlphabetically(const std::string& str1, const std::string& str2) {
+bool checkIfSmallerAlphabetically(const std::string& str1, const std::string& str2) {
     for (size_t i = 0; i < str1.size(), i < str2.size(); i++) {
         if (
             static_cast<unsigned int>(tolower(str1[i])) < // smaller
             static_cast<unsigned int>(tolower(str2[i]))
         ) {
-            return 0; // arg1 is smaller alphabetically
+            return true; // arg1 is smaller alphabetically
         } else if (
             static_cast<unsigned int>(tolower(str1[i])) > 
             static_cast<unsigned int>(tolower(str2[i])) // smaller
         ) {
-            return 1; // arg2 is smaller alphabetically
+            return false; // arg2 is smaller alphabetically
         }
 
         if (str1.size() > i && str2.size() > i) {
@@ -35,5 +35,5 @@ int getSmallerStringAlphabetically(const std::string& str1, const std::string& s
         }
     }
 
-    return -1; // strings are the same alphabetically
+    return false;
 }
