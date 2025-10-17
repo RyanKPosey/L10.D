@@ -15,7 +15,7 @@
 using namespace std;
 
 bool checkIfSmallerAlphabetically(const std::string& str1, const std::string& str2) {
-    for (size_t i = 0; i < str1.size(), i < str2.size(); i++) {
+    for (size_t i = 0; i < str1.size() && i < str2.size(); i++) {
         if (
             static_cast<unsigned int>(tolower(str1[i])) < // smaller
             static_cast<unsigned int>(tolower(str2[i]))
